@@ -12,6 +12,7 @@ base: core18
 apps:
   powwow:
     command: locales-launch powwow
+    desktop: share/applications/powwow.desktop
     plugs:
       - home
       - network
@@ -49,3 +50,12 @@ parts:
       - libc-bin
       # For locale data used by localedef(1)
       - locales
+
+  desktop-integration:
+    plugin: copy
+    source: .
+    files:
+      powwow.desktop: usr/share/applications/powwow.desktop
+    snap:
+      - usr/share
+    after: [powwow]
